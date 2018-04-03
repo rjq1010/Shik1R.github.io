@@ -3,11 +3,32 @@
   
     
     <entry>
-      <title>Test</title>
-      <link href="/2018/04/02/Test/"/>
-      <url>/2018/04/02/Test/</url>
-      <content type="html"><![CDATA[]]></content>
+      <title>Hexo搭建记录</title>
+      <link href="/2018/04/03/%E5%85%B3%E4%BA%8E%E5%8F%8C%E6%8B%BC/"/>
+      <url>/2018/04/03/%E5%85%B3%E4%BA%8E%E5%8F%8C%E6%8B%BC/</url>
+      <content type="html"><![CDATA[<p>有段时间一直在想着双拼、全拼、五笔的一些问题，此文为看到《数学之美》第21章“拼音输入法的数学原理”后有感所写。</p><a id="more"></a><h2 id="以前是不知道双拼这个东西的，偶然从知乎了解之后，觉得可以尝试一下，便选取了好评很多的小鹤双拼，直到今天也两年了。如果有兴趣，希望各位也能了解一下双拼输入，我认为是最少的成本花费下最高效的输入方式。"><a href="#以前是不知道双拼这个东西的，偶然从知乎了解之后，觉得可以尝试一下，便选取了好评很多的小鹤双拼，直到今天也两年了。如果有兴趣，希望各位也能了解一下双拼输入，我认为是最少的成本花费下最高效的输入方式。" class="headerlink" title=" 以前是不知道双拼这个东西的，偶然从知乎了解之后，觉得可以尝试一下，便选取了好评很多的小鹤双拼，直到今天也两年了。如果有兴趣，希望各位也能了解一下双拼输入，我认为是最少的成本花费下最高效的输入方式。"></a> 以前是不知道双拼这个东西的，偶然从知乎了解之后，觉得可以尝试一下，便选取了好评很多的小鹤双拼，直到今天也两年了。如果有兴趣，希望各位也能了解一下双拼输入，我认为是最少的成本花费下最高效的输入方式。</h2><p>输入速率是一个击键次数与重码率的问题，从《数学之美》中了解到其本质上是一个信息论的问题，击键次数是可以通过香农的第一理论计算出来的。而重码率的问题是可以通过数学模型来解决的。文中提到拼音输入法早期甚至是双拼早于全拼的，中间流行了五笔，最后还是回到了全拼，并提到了双拼关于重码率，击键时间，容错率的问题。</p><p>##击键时间<br>《数学之美》中提到双拼的输入方式不自然，拆声母韵母的时候会存在思维变慢。但我对这些并不认同，双拼的思维方式是完全没有改变的，这一点不同于拆字类型的输入方式，只要两三个月对于新键位的熟悉，在输入的时候是完全没有任何影响的。</p><p>##重码率<br>重码率的问题本身是存在，但是对于现在主流的输入法这一点的劣势是的消除了的。语音模型的改进，上下文相关的分析使得重码的问题基本是不存在的（我使用的时候是没有过重码的问题的）。印象最深刻的重码问题就是当开启了“双拼下使用全拼”，即自动识别双拼全拼，输入xian会出现“先”，然而纯双拼是直接显示“西安”的。当然，这其实是全拼的重码问题。</p><p>##容错率<br>容错率的问题是我第一次意识到的，即对于前鼻音和后鼻音分辨不清的时候的问题，如果一个人对于前后鼻音不能快速有效的识别的话，双拼上是会存在问题的（当然全拼也是存在的），但全拼的输入方式使得一部分的错误能掩盖掉，双拼就只能以正确的形式输入。这个问题其实并不是输入法的问题，性质上和手指键位是否标准，击键次数最快多少等主关因素是相同的，但也不可否认这样的问题。</p><p>##感言</p><p>智能输入法的出现使得全拼的重码率变低，普通输入速率大幅上升，但这对于双拼也是一样的，甚至影响更大。</p><p>字词平台输入法其实是有历史局限性的，理论上很好，上限高。但是是跟不上时代的东西，除非专业人员，并不十分推荐使用，但学习量不大的如“小鹤双形”在一些场合却也十分适用，能掌握基本使用方法也是很好的。</p><p>日常输入速度在达到一个量的时候（如100字/min），更多的影响其实是思考的速度，而非打字的速度，打字终究还是要自己习惯，自己舒适就行，越是追求着一种极致，最后反而可能在一些方面违背了初心，那样也就不好了。</p>]]></content>
       
+      
+        <tags>
+            
+            <tag> Archive </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Hexo搭建记录</title>
+      <link href="/2018/04/03/Hexo%E6%90%AD%E5%BB%BA/"/>
+      <url>/2018/04/03/Hexo%E6%90%AD%E5%BB%BA/</url>
+      <content type="html"><![CDATA[<p>An Archive of Using Hexo with GitHub.<br><a id="more"></a></p><h2 id="GitHub-Repository"><a href="#GitHub-Repository" class="headerlink" title="GitHub Repository"></a>GitHub Repository</h2><ol><li>创建名为name.github.io的repository</li><li>启用GitHub Pages，会显示相应网页地址。</li></ol><h2 id="Hexo本地部署"><a href="#Hexo本地部署" class="headerlink" title="Hexo本地部署"></a>Hexo本地部署</h2><ol><li>Reuqire<ul><li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></li><li><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></li></ul></li><li><p><del>Windows下以下操作建议在git bash中完成。</del>、</p><ul><li><p>由于众所周知的原因，npm需要换源,不然速度奇慢</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li><li><p>安装hexo<br><code>$ npm install -g hexo-cli</code></p></li><li><p>检查安装是否成功<br><code>hexo -v</code></p></li><li><p>新建一个Blog目录，如D:/Blog,在这里初始化hexo,成功时会显示“Start blogging with Hexo”<br><code>hexo init</code></p></li><li><p>体验Hexo<br><code>npm install &lt;br&gt;hexo g</code></p></li><li><p>Hexo本地服务器,地址localhost:4000,可作为测试使用<br><code>hexo s</code>  </p></li></ul></li></ol><h2 id="Git与Hexo连接（同步推送）"><a href="#Git与Hexo连接（同步推送）" class="headerlink" title="Git与Hexo连接（同步推送）"></a>Git与Hexo连接（同步推送）</h2><ol><li><p>设置Git usrname和email</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"`YourName`"</span></span><br><span class="line">git config --global user.email <span class="string">"`YourEmail`"</span></span><br></pre></td></tr></table></figure></li><li><p>生成秘钥</p><ul><li><p>秘钥存储在.ssh文件下<br><code>cd ./.ssh</code></p></li><li><p>生成ssh秘钥</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;`YourEmail`&quot;</span><br></pre></td></tr></table></figure></li><li><p>把秘钥添加到ssh-agent</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br></pre></td></tr></table></figure></li><li><p>生成的ssh key 添加到ssh-agent<br><code>ssh-add ./.ssh/id_rsa</code></p></li><li><p>GitHub -&gt; setting -&gt; SSH and GPGkeys 添加key.</p></li><li><p>测试是否成功<br><code>ssh -T git@github.com</code></p></li><li><p><code>_config.yml</code>修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gdutxiaoxu/gdutxiaoxu.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li></ul></li></ol>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Archive </tag>
+            
+        </tags>
       
     </entry>
     
