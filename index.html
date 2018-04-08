@@ -308,7 +308,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/08/Linux编程小计/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2018/04/08/Linux编程小计/" itemprop="url">Linux编程小计</a></h1>
         
 
         <div class="post-meta">
@@ -359,16 +359,14 @@
 
       
         
-          
-            <h3 id="1-inet-ntoa-与inet-addr-函数"><a href="#1-inet-ntoa-与inet-addr-函数" class="headerlink" title="1. inet_ntoa()与inet_addr()函数"></a>1. inet_ntoa()与inet_addr()函数</h3><h5 id="文件头-lt-arpa-inet-h-gt"><a href="#文件头-lt-arpa-inet-h-gt" class="headerlink" title="文件头: &lt;arpa/inet.h&gt;"></a>文件头: &lt;arpa/inet.h&gt;</h5><p>使用 socket 进行通信，一般需要指定三个元素：<code>地址族</code>，<code>IP地址</code>，<code>端口号</code>。三个元素由 <code>SOCKADDR_IN</code> 结构体定义，一般将IP地址设定为 <code>INADDR_ANY</code> ，需要使用特定IP时，则使用 <code>inet_addr()</code> 和<code>inet_ntoa（）</code>，完成字符串和 in_addr 结构体的互换。 in_addr 是SOCKADDR_IN 的成员，代表IP地址。</p>
-<h5 id="inet-addr-函数声明："><a href="#inet-addr-函数声明：" class="headerlink" title="inet_addr()函数声明："></a>inet_addr()函数声明：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">inet_addr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* cp)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>cp表示点十分制的IP地址，如192.168.0.1</p>
-<h5 id="inet-ntoa-函数声明："><a href="#inet-ntoa-函数声明：" class="headerlink" title="inet_ntoa()函数声明："></a>inet_ntoa()函数声明：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">inet_ntoa</span><span class="params">(struct in_addr in)</span></span>;</span><br></pre></td></tr></table></figure>
-<h5 id="in表示in-addr的结构体，结构为："><a href="#in表示in-addr的结构体，结构为：" class="headerlink" title="in表示in_addr的结构体，结构为："></a>in表示in_addr的结构体，结构为：</h5> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span> UCHAR s_b1,s_b2,s_b3,s_b4; &#125; S_un_b;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span> USHORT s_w1,s_w2; &#125; S_un_w;</span><br><span class="line">    ULONG S_addr；</span><br><span class="line">    &#125; S_un;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="函数使用："><a href="#函数使用：" class="headerlink" title="函数使用："></a>函数使用：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SOCKADDR_IN sock;</span><br><span class="line">sock.sin_family = AF_INET;</span><br><span class="line"><span class="comment">//将字符串转换为in_addr类型</span></span><br><span class="line">sock.sin_addr.S_un.S_addr =  inet_addr(<span class="string">"192.168.1.111"</span>);</span><br><span class="line">sock.sin_port = htons(<span class="number">5000</span>);</span><br><span class="line"><span class="comment">//将in_addr类型转换为字符串</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"inet_ntoa ip = %s\n"</span>,inet_ntoa(sock.sin_addr));</span><br></pre></td></tr></table></figure>
-<p>inet_ntoa ip = 192.168.1.111</p>
-
-          
+          <p>记录一些曾用到过的Linux编程相关函数，用法以及注意事项。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/08/Linux编程小计/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -837,7 +835,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

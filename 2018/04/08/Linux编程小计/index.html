@@ -60,7 +60,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Tips," />
 
 
 
@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="1. inet_ntoa()与inet_addr()函数文件头: &amp;lt;arpa/inet.h&amp;gt;使用 socket 进行通信，一般需要指定三个元素：地址族，IP地址，端口号。三个元素由 SOCKADDR_IN 结构体定义，一般将IP地址设定为 INADDR_ANY ，需要使用特定IP时，则使用 inet_addr() 和inet_ntoa（），完成字符串和 in_addr 结构体的互换。">
-<meta name="keywords" content="Hexo, NexT">
+<meta name="description" content="记录一些曾用到过的Linux编程相关函数，用法以及注意事项。">
+<meta name="keywords" content="Tips">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shik1Rの部屋">
+<meta property="og:title" content="Linux编程小计">
 <meta property="og:url" content="http://rjq1010.github.io/2018/04/08/Linux编程小计/index.html">
 <meta property="og:site_name" content="Shik1Rの部屋">
-<meta property="og:description" content="1. inet_ntoa()与inet_addr()函数文件头: &amp;lt;arpa/inet.h&amp;gt;使用 socket 进行通信，一般需要指定三个元素：地址族，IP地址，端口号。三个元素由 SOCKADDR_IN 结构体定义，一般将IP地址设定为 INADDR_ANY ，需要使用特定IP时，则使用 inet_addr() 和inet_ntoa（），完成字符串和 in_addr 结构体的互换。">
+<meta property="og:description" content="记录一些曾用到过的Linux编程相关函数，用法以及注意事项。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-08T11:31:53.314Z">
+<meta property="og:updated_time" content="2018-04-08T19:03:24.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shik1Rの部屋">
-<meta name="twitter:description" content="1. inet_ntoa()与inet_addr()函数文件头: &amp;lt;arpa/inet.h&amp;gt;使用 socket 进行通信，一般需要指定三个元素：地址族，IP地址，端口号。三个元素由 SOCKADDR_IN 结构体定义，一般将IP地址设定为 INADDR_ANY ，需要使用特定IP时，则使用 inet_addr() 和inet_ntoa（），完成字符串和 in_addr 结构体的互换。">
+<meta name="twitter:title" content="Linux编程小计">
+<meta name="twitter:description" content="记录一些曾用到过的Linux编程相关函数，用法以及注意事项。">
 
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <title> | Shik1Rの部屋</title>
+  <title>Linux编程小计 | Shik1Rの部屋</title>
   
 
 
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Linux编程小计</h1>
         
 
         <div class="post-meta">
@@ -356,7 +356,8 @@
       
 
       
-        <h3 id="1-inet-ntoa-与inet-addr-函数"><a href="#1-inet-ntoa-与inet-addr-函数" class="headerlink" title="1. inet_ntoa()与inet_addr()函数"></a>1. inet_ntoa()与inet_addr()函数</h3><h5 id="文件头-lt-arpa-inet-h-gt"><a href="#文件头-lt-arpa-inet-h-gt" class="headerlink" title="文件头: &lt;arpa/inet.h&gt;"></a>文件头: &lt;arpa/inet.h&gt;</h5><p>使用 socket 进行通信，一般需要指定三个元素：<code>地址族</code>，<code>IP地址</code>，<code>端口号</code>。三个元素由 <code>SOCKADDR_IN</code> 结构体定义，一般将IP地址设定为 <code>INADDR_ANY</code> ，需要使用特定IP时，则使用 <code>inet_addr()</code> 和<code>inet_ntoa（）</code>，完成字符串和 in_addr 结构体的互换。 in_addr 是SOCKADDR_IN 的成员，代表IP地址。</p>
+        <p>记录一些曾用到过的Linux编程相关函数，用法以及注意事项。<br><a id="more"></a></p>
+<h3 id="1-inet-ntoa-与inet-addr-函数"><a href="#1-inet-ntoa-与inet-addr-函数" class="headerlink" title="1. inet_ntoa()与inet_addr()函数"></a>1. inet_ntoa()与inet_addr()函数</h3><h5 id="文件头-lt-arpa-inet-h-gt"><a href="#文件头-lt-arpa-inet-h-gt" class="headerlink" title="文件头: &lt;arpa/inet.h&gt;"></a>文件头: &lt;arpa/inet.h&gt;</h5><p>使用 socket 进行通信，一般需要指定三个元素：<code>地址族</code>，<code>IP地址</code>，<code>端口号</code>。三个元素由 <code>SOCKADDR_IN</code> 结构体定义，一般将IP地址设定为 <code>INADDR_ANY</code> ，需要使用特定IP时，则使用 <code>inet_addr()</code> 和<code>inet_ntoa（）</code>，完成字符串和 in_addr 结构体的互换。 in_addr 是SOCKADDR_IN 的成员，代表IP地址。</p>
 <h5 id="inet-addr-函数声明："><a href="#inet-addr-函数声明：" class="headerlink" title="inet_addr()函数声明："></a>inet_addr()函数声明：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">inet_addr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* cp)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>cp表示点十分制的IP地址，如192.168.0.1</p>
 <h5 id="inet-ntoa-函数声明："><a href="#inet-ntoa-函数声明：" class="headerlink" title="inet_ntoa()函数声明："></a>inet_ntoa()函数声明：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">inet_ntoa</span><span class="params">(struct in_addr in)</span></span>;</span><br></pre></td></tr></table></figure>
@@ -377,6 +378,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tips/" rel="tag"><i class="fa fa-tag"></i> Tips</a>
+          
+        </div>
       
 
       
@@ -489,7 +496,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
