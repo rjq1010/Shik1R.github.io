@@ -60,7 +60,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Archive," />
 
 
 
@@ -71,17 +71,18 @@
 
 
 
-<meta name="description" content="静かに積りささやく">
-<meta name="keywords" content="Hexo, NexT">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shik1Rの部屋">
-<meta property="og:url" content="http://Shik1R.github.io/tags/Tips/index.html">
+<meta name="description" content="给vmware中ubuntu添加硬盘空间使用，同样适用挂载硬盘，留存小记。">
+<meta name="keywords" content="Archive">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMware ubuntu虚拟机添加容量">
+<meta property="og:url" content="http://Shik1R.github.io/2018/04/25/VMware-ubuntu虚拟机添加容量/index.html">
 <meta property="og:site_name" content="Shik1Rの部屋">
-<meta property="og:description" content="静かに積りささやく">
+<meta property="og:description" content="给vmware中ubuntu添加硬盘空间使用，同样适用挂载硬盘，留存小记。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-25T12:13:55.589Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shik1Rの部屋">
-<meta name="twitter:description" content="静かに積りささやく">
+<meta name="twitter:title" content="VMware ubuntu虚拟机添加容量">
+<meta name="twitter:description" content="给vmware中ubuntu添加硬盘空间使用，同样适用挂载硬盘，留存小记。">
 
 
 
@@ -111,13 +112,13 @@
 
 
 
-  <link rel="canonical" href="http://Shik1R.github.io/tags/Tips/"/>
+  <link rel="canonical" href="http://Shik1R.github.io/2018/04/25/VMware-ubuntu虚拟机添加容量/"/>
 
 
 
 
 
-  <title>Tag: Tips | Shik1Rの部屋</title>
+  <title>VMware ubuntu虚拟机添加容量 | Shik1Rの部屋</title>
   
 
 
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -274,54 +275,171 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Tips<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Shik1R.github.io/2018/04/25/VMware-ubuntu虚拟机添加容量/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shik1R">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="//cdn.v2ex.com/gravatar/905420027f3c60ee1f3f3761267b3a16?s=140">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shik1Rの部屋">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/08/Linux编程小计/" itemprop="url">
-              
-                <span itemprop="name">Linux编程小计</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">VMware ubuntu虚拟机添加容量</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-08T18:20:14+08:00"
-              content="2018-04-08" >
-          04-08
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T15:24:36+08:00">
+                2018-04-25
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>给vmware中ubuntu添加硬盘空间使用，同样适用挂载硬盘，留存小记。<br><a id="more"></a></p>
+<ol>
+<li>命令行 <code>vmware-vdiskmanager -x 80Gb &quot;D:\VMware\...\..vmdk(disk address)&quot;</code> 添加大小或者通过UI界面直接添加</li>
+<li>reboot vmware，进入Ubuntu系统后，<code>df -ah</code>发现硬盘大小并未改变，要进行分区和指定文件系统，ubuntu 才能识别。</li>
+<li><code>fdisk -l</code> 显示当前磁盘分区表</li>
+<li><code>sudo fdisk /dev/sda</code> sda是SCSI格式硬盘，IDE类型对应hda<br>  添加新分区 <code>n</code><br>   创建主分区 <code>p</code><br> 选择分区号 默认或者自己选择，后面自行对应<br> 开始进行分区，注意start与end之间大小，如果第一次分得空间较小，再来一次即可。<br> <code>w</code>保存分区并退出</li>
+<li>重启ubuntu或<code>partprobe</code></li>
+<li>格式化新分区 <code>sudo mkfs -t ext4 /dev/sda3</code>(名称自行对应)</li>
+</ol>
+<ul>
+<li>挂载分区 <code>mkdir /mnt/sda3</code><br>  <code>sudo mount /dev/sda3 /mnt/sda3</code><br>  手动挂载信息再/etc/mtab 中<ul>
+<li>添加开机自行 <code>sudo gedit /etc/fstab</code><br> 最后一行添加<code>/dev/sda3 /mnt/sda3 ext4 defaults, 0 1</code></li>
+<li>使用<code>df -ah</code>查看分区结果</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Archive/" rel="tag"><i class="fa fa-tag"></i> Archive</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/Ubuntu安装配置/" rel="next" title="Ubuntu安装配置">
+                <i class="fa fa-chevron-left"></i> Ubuntu安装配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/27/一点想做的事情/" rel="prev" title="一点想做的事情">
+                一点想做的事情 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -329,6 +447,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -569,6 +691,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

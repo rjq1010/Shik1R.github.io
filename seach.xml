@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title>Linux编程小计</title>
-      <link href="/2018/04/08/Linux%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%A1/"/>
-      <url>/2018/04/08/Linux%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%A1/</url>
-      <content type="html"><![CDATA[<p>记录一些曾用到过的Linux编程相关函数，用法以及注意事项。<br><a id="more"></a></p><h3 id="1-inet-ntoa-与inet-addr-函数"><a href="#1-inet-ntoa-与inet-addr-函数" class="headerlink" title="1. inet_ntoa()与inet_addr()函数"></a>1. inet_ntoa()与inet_addr()函数</h3><h5 id="文件头-lt-arpa-inet-h-gt"><a href="#文件头-lt-arpa-inet-h-gt" class="headerlink" title="文件头: &lt;arpa/inet.h&gt;"></a>文件头: &lt;arpa/inet.h&gt;</h5><p>使用 socket 进行通信，一般需要指定三个元素：<code>地址族</code>，<code>IP地址</code>，<code>端口号</code>。三个元素由 <code>SOCKADDR_IN</code> 结构体定义，一般将IP地址设定为 <code>INADDR_ANY</code> ，需要使用特定IP时，则使用 <code>inet_addr()</code> 和<code>inet_ntoa（）</code>，完成字符串和 in_addr 结构体的互换。 in_addr 是SOCKADDR_IN 的成员，代表IP地址。</p><h5 id="inet-addr-函数声明："><a href="#inet-addr-函数声明：" class="headerlink" title="inet_addr()函数声明："></a>inet_addr()函数声明：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">inet_addr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* cp)</span></span>;</span><br></pre></td></tr></table></figure><p>cp表示点十分制的IP地址，如192.168.0.1</p><h5 id="inet-ntoa-函数声明："><a href="#inet-ntoa-函数声明：" class="headerlink" title="inet_ntoa()函数声明："></a>inet_ntoa()函数声明：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">inet_ntoa</span><span class="params">(struct in_addr in)</span></span>;</span><br></pre></td></tr></table></figure><h5 id="in表示in-addr的结构体，结构为："><a href="#in表示in-addr的结构体，结构为：" class="headerlink" title="in表示in_addr的结构体，结构为："></a>in表示in_addr的结构体，结构为：</h5> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span> UCHAR s_b1,s_b2,s_b3,s_b4; &#125; S_un_b;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span> USHORT s_w1,s_w2; &#125; S_un_w;</span><br><span class="line">    ULONG S_addr；</span><br><span class="line">    &#125; S_un;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h5 id="函数使用："><a href="#函数使用：" class="headerlink" title="函数使用："></a>函数使用：</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SOCKADDR_IN sock;</span><br><span class="line">sock.sin_family = AF_INET;</span><br><span class="line"><span class="comment">//将字符串转换为in_addr类型</span></span><br><span class="line">sock.sin_addr.S_un.S_addr =  inet_addr(<span class="string">"192.168.1.111"</span>);</span><br><span class="line">sock.sin_port = htons(<span class="number">5000</span>);</span><br><span class="line"><span class="comment">//将in_addr类型转换为字符串</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"inet_ntoa ip = %s\n"</span>,inet_ntoa(sock.sin_addr));</span><br></pre></td></tr></table></figure><p>inet_ntoa ip = 192.168.1.111</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Tips </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>关于双拼</title>
-      <link href="/2018/04/03/%E5%85%B3%E4%BA%8E%E5%8F%8C%E6%8B%BC/"/>
-      <url>/2018/04/03/%E5%85%B3%E4%BA%8E%E5%8F%8C%E6%8B%BC/</url>
-      <content type="html"><![CDATA[<p>有段时间一直在想着双拼、全拼、五笔的一些问题，此文为看到《数学之美》第21章“拼音输入法的数学原理”后有感所写。</p><a id="more"></a><p> 以前是不知道双拼这个东西的，偶然从知乎了解之后，觉得可以尝试一下，便选取了好评很多的小鹤双拼，直到今天也两年了。如果有兴趣，希望各位也能了解一下双拼输入，我认为是最少的成本花费下最高效的输入方式。</p><hr><p>输入速率是一个击键次数与重码率的问题，从《数学之美》中了解到其本质上是一个信息论的问题，击键次数是可以通过香农的第一理论计算出来的。而重码率的问题是可以通过数学模型来解决的。文中提到拼音输入法早期甚至是双拼早于全拼的，中间流行了五笔，最后还是回到了全拼，并提到了双拼关于重码率，击键时间，容错率的问题。</p><h2 id="击键时间"><a href="#击键时间" class="headerlink" title="击键时间"></a>击键时间</h2><p>《数学之美》中提到双拼的输入方式不自然，拆声母韵母的时候会存在思维变慢。但我对这些并不认同，双拼的思维方式是完全没有改变的，这一点不同于拆字类型的输入方式，只要两三个月对于新键位的熟悉，在输入的时候是完全没有任何影响的。</p><h2 id="重码率"><a href="#重码率" class="headerlink" title="重码率"></a>重码率</h2><p>重码率的问题本身是存在，但是对于现在主流的输入法这一点的劣势是的消除了的。语音模型的改进，上下文相关的分析使得重码的问题基本是不存在的（我使用的时候是没有过重码的问题的）。印象最深刻的重码问题就是当开启了“双拼下使用全拼”，即自动识别双拼全拼，输入xian会出现“先”，然而纯双拼是直接显示“西安”的。当然，这其实是全拼的重码问题。</p><h2 id="容错率"><a href="#容错率" class="headerlink" title="容错率"></a>容错率</h2><p>容错率的问题是我第一次意识到的，即对于前鼻音和后鼻音分辨不清的时候的问题，如果一个人对于前后鼻音不能快速有效的识别的话，双拼上是会存在问题的（当然全拼也是存在的），但全拼的输入方式使得一部分的错误能掩盖掉，双拼就只能以正确的形式输入。这个问题其实并不是输入法的问题，性质上和手指键位是否标准，击键次数最快多少等主关因素是相同的，但也不可否认这样的问题。</p><h2 id="感言"><a href="#感言" class="headerlink" title="感言"></a>感言</h2><p>智能输入法的出现使得全拼的重码率变低，普通输入速率大幅上升，但这对于双拼也是一样的，甚至影响更大。</p><p>字词平台输入法其实是有历史局限性的，理论上很好，上限高。但是是跟不上时代的东西，除非专业人员，并不十分推荐使用，但学习量不大的如“小鹤双形”在一些场合却也十分适用，能掌握基本使用方法也是很好的。</p><p>日常输入速度在达到一个量的时候（如100字/min），更多的影响其实是思考的速度，而非打字的速度，打字终究还是要自己习惯，自己舒适就行，越是追求着一种极致，最后反而可能在一些方面违背了初心，那样也就不好了。</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> 独り言 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Hexo搭建记录</title>
-      <link href="/2018/04/03/Hexo%E6%90%AD%E5%BB%BA/"/>
-      <url>/2018/04/03/Hexo%E6%90%AD%E5%BB%BA/</url>
-      <content type="html"><![CDATA[<p>An Archive of Using Hexo with GitHub.<br><a id="more"></a></p><h2 id="GitHub-Repository"><a href="#GitHub-Repository" class="headerlink" title="GitHub Repository"></a>GitHub Repository</h2><ol><li>创建名为name.github.io的repository</li><li>启用GitHub Pages，会显示相应网页地址。</li></ol><h2 id="Hexo本地部署"><a href="#Hexo本地部署" class="headerlink" title="Hexo本地部署"></a>Hexo本地部署</h2><ol><li>Reuqire<ul><li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></li><li><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></li></ul></li><li><p><del>Windows下以下操作建议在git bash中完成。</del>、</p><ul><li><p>由于众所周知的原因，npm需要换源,不然速度奇慢</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure></li><li><p>安装hexo<br><code>$ npm install -g hexo-cli</code></p></li><li><p>检查安装是否成功<br><code>hexo -v</code></p></li><li><p>新建一个Blog目录，如D:/Blog,在这里初始化hexo,成功时会显示“Start blogging with Hexo”<br><code>hexo init</code></p></li><li><p>体验Hexo</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install </span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure></li><li><p>Hexo本地服务器,地址localhost:4000,可作为测试使用<br><code>hexo s</code>  </p></li></ul></li></ol><h2 id="Git与Hexo连接（同步推送）"><a href="#Git与Hexo连接（同步推送）" class="headerlink" title="Git与Hexo连接（同步推送）"></a>Git与Hexo连接（同步推送）</h2><ol><li><p>设置Git usrname和email</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"`YourName`"</span></span><br><span class="line">git config --global user.email <span class="string">"`YourEmail`"</span></span><br></pre></td></tr></table></figure></li><li><p>生成秘钥</p><ul><li><p>秘钥存储在.ssh文件下<br><code>cd ./.ssh</code></p></li><li><p>生成ssh秘钥</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;`YourEmail`&quot;</span><br></pre></td></tr></table></figure></li><li><p>把秘钥添加到ssh-agent</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;</span><br></pre></td></tr></table></figure></li><li><p>生成的ssh key 添加到ssh-agent<br><code>ssh-add ./.ssh/id_rsa</code></p></li><li><p>GitHub -&gt; setting -&gt; SSH and GPGkeys 添加key.</p></li><li><p>测试是否成功<br><code>ssh -T git@github.com</code></p></li><li><p><code>_config.yml</code>修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gdutxiaoxu/gdutxiaoxu.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li></ul></li></ol><h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ol><li><p>搜索插件<br><code>npm install hexo-generator-searchdb --save</code><br>修改站点配置文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#search</span><br><span class="line">search: </span><br><span class="line">    path: search.xml </span><br><span class="line">    field: post  </span><br><span class="line">    format: html </span><br><span class="line">    limit: 10000</span><br></pre></td></tr></table></figure><p>修改主题配置文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></li></ol><h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><ol><li>bash上传文件时会自动忽略掉大小写的问题，由此容易造成GitHub Pages 404,需要在<code>.deploy_git-.git-&gt;cofnig</code>中将<code>ignorecase = false</code>修改为<code>= true</code>。防止由于大小写问题造成路径无法识别而404。</li></ol>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Archive </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2018/04/02/hello-world/"/>
-      <url>/2018/04/02/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br><a id="more"></a></p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[一点想做的事情]]></title>
+    <url>%2F2018%2F04%2F27%2F%E4%B8%80%E7%82%B9%E6%83%B3%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85%2F</url>
+    <content type="text"><![CDATA[只是一点无聊的想法罢了 听了几年东方的歌，但一直没有深入的了解，明知道是个大坑，但终究还是要入的吧，只是如此想着，却总是没有什么行动。愿有一天会系统的总结一下。 WA2的游戏与秒五，一直想为这两部写一点总结似似的东西。但总是感觉自己阅历不够，终究写不出来什么，但是想来还是要有一点的梦想吧，在此记之。 秒五来讲更多的是看过了那么多精湛的分析之后，自己却不知写什么了，明明已经解析的如此详细，自己究竟又能写什么呢？有什么能够是属于自己的东西呢？或许只能怪阅历，或许只能怪时间还不是时候吧。 WA2来讲，更多的大抵是自己对作品的不了解吧，只玩穿过一次的我，许多地方或许还是没有详细的注意到的，慌忙而写，想来结果也是很惨，但终究还是个念想了。3.]]></content>
+      <tags>
+        <tag>Archive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VMware ubuntu虚拟机添加容量]]></title>
+    <url>%2F2018%2F04%2F25%2FVMware-ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E5%AE%B9%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[给vmware中ubuntu添加硬盘空间使用，同样适用挂载硬盘，留存小记。 命令行 vmware-vdiskmanager -x 80Gb &quot;D:\VMware\...\..vmdk(disk address)&quot; 添加大小或者通过UI界面直接添加 reboot vmware，进入Ubuntu系统后，df -ah发现硬盘大小并未改变，要进行分区和指定文件系统，ubuntu 才能识别。 fdisk -l 显示当前磁盘分区表 sudo fdisk /dev/sda sda是SCSI格式硬盘，IDE类型对应hda 添加新分区 n 创建主分区 p 选择分区号 默认或者自己选择，后面自行对应 开始进行分区，注意start与end之间大小，如果第一次分得空间较小，再来一次即可。 w保存分区并退出 重启ubuntu或partprobe 格式化新分区 sudo mkfs -t ext4 /dev/sda3(名称自行对应) 挂载分区 mkdir /mnt/sda3 sudo mount /dev/sda3 /mnt/sda3 手动挂载信息再/etc/mtab 中 添加开机自行 sudo gedit /etc/fstab 最后一行添加/dev/sda3 /mnt/sda3 ext4 defaults, 0 1 使用df -ah查看分区结果]]></content>
+      <tags>
+        <tag>Archive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu安装配置]]></title>
+    <url>%2F2018%2F04%2F11%2FUbuntu%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[安装完Ubuntu之后总要做各种各样的修改，小计备用。 System Ubuntu换阿里源 查询codenamelsb_release -a 在这里确认阿里源支持 备份源 12cd /etc/aptsudo mv sources.list sources.list_bak 添加源，将每一行 trusty 替换成 codename。 12345678910deb http://mirrors.aliyun.com/ubuntu/ trusty main multiverse restricted universedeb http://mirrors.aliyun.com/ubuntu/ trusty-backports main multiverse restricted universedeb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main multiverse restricted universedeb http://mirrors.aliyun.com/ubuntu/ trusty-security main multiverse restricted universedeb http://mirrors.aliyun.com/ubuntu/ trusty-updates main multiverse restricted universedeb-src http://mirrors.aliyun.com/ubuntu/ trusty main multiverse restricted universedeb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main multiverse restricted universedeb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main multiverse restricted universedeb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main multiverse restricted universedeb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main multiverse restricted universe 5. 保存并`sudo apt-get update`更新。 Software##]]></content>
+      <tags>
+        <tag>Archive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Apache服务器本地浏览配置]]></title>
+    <url>%2F2018%2F04%2F10%2FApache%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%AC%E5%9C%B0%E6%B5%8F%E8%A7%88%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[很久以前也遇到过这个问题,弄了好久才弄出来,这次又弄了很久,问题其实很简单,记录一下备忘。 注意以下问题即可 windows下防火墙的80端口是否打开 Apache2.2与2.4版本控制方法不一样,需要修改. 2.2 123Order deny,allowAllow from allAllow from host ip 2.4 12Requrie all grantedRequire host ip 修改httpd.conf和httpd-vhosts.conf两个文件]]></content>
+      <tags>
+        <tag>Serve，Tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux编程小计]]></title>
+    <url>%2F2018%2F04%2F08%2FLinux%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%A1%2F</url>
+    <content type="text"><![CDATA[记录一些曾用到过的Linux编程相关函数，用法以及注意事项。 1. inet_ntoa()与inet_addr()函数文件头: &lt;arpa/inet.h&gt;使用 socket 进行通信，一般需要指定三个元素：地址族，IP地址，端口号。三个元素由 SOCKADDR_IN 结构体定义，一般将IP地址设定为 INADDR_ANY ，需要使用特定IP时，则使用 inet_addr() 和inet_ntoa（），完成字符串和 in_addr 结构体的互换。 in_addr 是SOCKADDR_IN 的成员，代表IP地址。 inet_addr()函数声明：1unsigned long inet_addr(const char* cp); cp表示点十分制的IP地址，如192.168.0.1 inet_ntoa()函数声明：1char* inet_ntoa(struct in_addr in); in表示in_addr的结构体，结构为： 123456789struct in_addr&#123; union &#123; struct&#123; UCHAR s_b1,s_b2,s_b3,s_b4; &#125; S_un_b; struct&#123; USHORT s_w1,s_w2; &#125; S_un_w; ULONG S_addr； &#125; S_un;&#125;; 函数使用：1234567SOCKADDR_IN sock;sock.sin_family = AF_INET;//将字符串转换为in_addr类型sock.sin_addr.S_un.S_addr = inet_addr("192.168.1.111");sock.sin_port = htons(5000);//将in_addr类型转换为字符串printf("inet_ntoa ip = %s\n",inet_ntoa(sock.sin_addr)); inet_ntoa ip = 192.168.1.111]]></content>
+      <tags>
+        <tag>Tips</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于双拼]]></title>
+    <url>%2F2018%2F04%2F03%2F%E5%85%B3%E4%BA%8E%E5%8F%8C%E6%8B%BC%2F</url>
+    <content type="text"><![CDATA[有段时间一直在想着双拼、全拼、五笔的一些问题，此文为看到《数学之美》第21章“拼音输入法的数学原理”后有感所写。 以前是不知道双拼这个东西的，偶然从知乎了解之后，觉得可以尝试一下，便选取了好评很多的小鹤双拼，直到今天也两年了。如果有兴趣，希望各位也能了解一下双拼输入，我认为是最少的成本花费下最高效的输入方式。 输入速率是一个击键次数与重码率的问题，从《数学之美》中了解到其本质上是一个信息论的问题，击键次数是可以通过香农的第一理论计算出来的。而重码率的问题是可以通过数学模型来解决的。文中提到拼音输入法早期甚至是双拼早于全拼的，中间流行了五笔，最后还是回到了全拼，并提到了双拼关于重码率，击键时间，容错率的问题。 击键时间《数学之美》中提到双拼的输入方式不自然，拆声母韵母的时候会存在思维变慢。但我对这些并不认同，双拼的思维方式是完全没有改变的，这一点不同于拆字类型的输入方式，只要两三个月对于新键位的熟悉，在输入的时候是完全没有任何影响的。 重码率重码率的问题本身是存在，但是对于现在主流的输入法这一点的劣势是的消除了的。语音模型的改进，上下文相关的分析使得重码的问题基本是不存在的（我使用的时候是没有过重码的问题的）。印象最深刻的重码问题就是当开启了“双拼下使用全拼”，即自动识别双拼全拼，输入xian会出现“先”，然而纯双拼是直接显示“西安”的。当然，这其实是全拼的重码问题。 容错率容错率的问题是我第一次意识到的，即对于前鼻音和后鼻音分辨不清的时候的问题，如果一个人对于前后鼻音不能快速有效的识别的话，双拼上是会存在问题的（当然全拼也是存在的），但全拼的输入方式使得一部分的错误能掩盖掉，双拼就只能以正确的形式输入。这个问题其实并不是输入法的问题，性质上和手指键位是否标准，击键次数最快多少等主关因素是相同的，但也不可否认这样的问题。 感言智能输入法的出现使得全拼的重码率变低，普通输入速率大幅上升，但这对于双拼也是一样的，甚至影响更大。 字词平台输入法其实是有历史局限性的，理论上很好，上限高。但是是跟不上时代的东西，除非专业人员，并不十分推荐使用，但学习量不大的如“小鹤双形”在一些场合却也十分适用，能掌握基本使用方法也是很好的。 日常输入速度在达到一个量的时候（如100字/min），更多的影响其实是思考的速度，而非打字的速度，打字终究还是要自己习惯，自己舒适就行，越是追求着一种极致，最后反而可能在一些方面违背了初心，那样也就不好了。]]></content>
+      <tags>
+        <tag>独り言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo搭建记录]]></title>
+    <url>%2F2018%2F04%2F03%2FHexo%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[An Archive of Using Hexo with GitHub. GitHub Repository 创建名为name.github.io的repository 启用GitHub Pages，会显示相应网页地址。 Hexo本地部署 Reuqire Node.js git Windows下以下操作建议在git bash中完成。、 由于众所周知的原因，npm需要换源,不然速度奇慢 12npm config set registry https://registry.npm.taobao.orgnpm config get registry 安装hexo$ npm install -g hexo-cli 检查安装是否成功hexo -v 新建一个Blog目录，如D:/Blog,在这里初始化hexo,成功时会显示“Start blogging with Hexo”hexo init 体验Hexo 12npm install hexo g Hexo本地服务器,地址localhost:4000,可作为测试使用hexo s Git与Hexo连接（同步推送） 设置Git usrname和email 12git config --global user.name "`YourName`"git config --global user.email "`YourEmail`" 生成秘钥 秘钥存储在.ssh文件下cd ./.ssh 生成ssh秘钥 1ssh-keygen -t rsa -C &quot;`YourEmail`&quot; 把秘钥添加到ssh-agent 1eval &quot;$(ssh-agent -s)&quot; 生成的ssh key 添加到ssh-agentssh-add ./.ssh/id_rsa GitHub -&gt; setting -&gt; SSH and GPGkeys 添加key. 测试是否成功ssh -T git@github.com _config.yml修改 1234deploy: type: git repo: git@github.com:gdutxiaoxu/gdutxiaoxu.github.io.git branch: master 插件 搜索插件npm install hexo-generator-searchdb --save修改站点配置文件 123456#searchsearch: path: search.xml field: post format: html limit: 10000 修改主题配置文件 12local_search: enable: true 坑 bash上传文件时会自动忽略掉大小写的问题，由此容易造成GitHub Pages 404,需要在.deploy_git-.git-&gt;cofnig中将ignorecase = false修改为= true。防止由于大小写问题造成路径无法识别而404。]]></content>
+      <tags>
+        <tag>Archive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F04%2F02%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
 </search>
