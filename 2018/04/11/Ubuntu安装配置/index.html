@@ -79,7 +79,7 @@
 <meta property="og:site_name" content="Shik1Rの部屋">
 <meta property="og:description" content="安装完Ubuntu之后总要做各种各样的修改，小计备用。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-11T10:02:27.788Z">
+<meta property="og:updated_time" content="2018-09-04T05:28:58.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu安装配置">
 <meta name="twitter:description" content="安装完Ubuntu之后总要做各种各样的修改，小计备用。">
@@ -372,12 +372,16 @@
 <li><p>添加源，将每一行 trusty 替换成 codename。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main multiverse restricted universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main multiverse restricted universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main multiverse restricted universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main multiverse restricted universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main multiverse restricted universe</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>保存并<code>sudo apt-get update</code>更新。</p>
+</li>
 </ol>
 </li>
+<li><h4 id="ipv6"><a href="#ipv6" class="headerlink" title="ipv6"></a>ipv6</h4><p>   <code>sudo apt-get install isatapd</code> 安装isatapd 即可使用ipv6</p>
+<p>   <code>ifconfig</code> 查看网络情况</p>
+</li>
+<li></li>
 </ul>
-<pre><code>5. 保存并`sudo apt-get update`更新。
-</code></pre><h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><p>## </p>
-
+<h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2>
       
     </div>
     
@@ -556,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System"><span class="nav-number">1.</span> <span class="nav-text">System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu换阿里源"><span class="nav-number">1.0.1.</span> <span class="nav-text">Ubuntu换阿里源</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software"><span class="nav-number">2.</span> <span class="nav-text">Software</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System"><span class="nav-number">1.</span> <span class="nav-text">System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu换阿里源"><span class="nav-number">1.0.1.</span> <span class="nav-text">Ubuntu换阿里源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ipv6"><span class="nav-number">1.0.2.</span> <span class="nav-text">ipv6</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Software"><span class="nav-number">2.</span> <span class="nav-text">Software</span></a></li></ol></div>
             
 
           </div>
